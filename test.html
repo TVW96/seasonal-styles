@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>jQuery Test Page</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        div#myDiv {
+            /*
+            background-color:orange; */
+        }
+
+        div#yetAnotherDiv li:nth-child(even){
+           
+            /*
+            background-color:yellow;
+            */
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery Test Page</h1>
+    <div id="myDiv">I'm inside a div with an id of myDiv</div>
+
+    <div id="myOtherDiv">
+        <p>I'm in a P tag!</p>
+        <p>I'm in a P tag!</p>
+        <p>I'm in a P tag!</p>
+        <p>I'm in a P tag!</p>
+        <p>I'm in a P tag!</p>
+        <p>I'm in a P tag!</p> 
+    </div>
+
+    <div id="yetAnotherDiv">
+        <ul>
+            <li>I'm a list item!</li>
+            <li>I'm a list item!</li>
+            <li>I'm a list item!</li>
+            <li>I'm a list item!</li>
+            <li>I'm a list item!</li>
+        </ul>
+    </div>
+
+<script>
+
+// div#myDiv is a SPECIFIER in CSS. div.myDiv is another specifier. 
+
+$("document").ready(function(){
+
+    let $theDiv = $("div#myDiv");
+        $theDiv
+            .css("background-color", "blue")
+            .css("border", "1px solid black")
+            .append(" Here's some additional text!");  
+
+        let counter = 0;
+        $("div#myOtherDiv p").each(function(){
+            counter++;
+            $(this).prepend(counter + ")");
+        });
+
+        $("div#yetAnotherDiv li:nth-child(even)").css("background-color", "blue");
+        $("div#yetAnotherDiv li").hide();//hide li items
+        $("div#yetAnotherDiv").hide()
+            .fadeIn(3000,function(){
+                $("div#yetAnotherDiv li").each(function(){
+                    $(this).slideDown(2000);
+                });
+            });
+
+    });
+
+
+// TWO WAYS TO CHANGE BACKGROUND COLOR WITH JAVA SCRIPT 
+
+   // document.getElementById("myDiv").style.backgroundColor = "orange";
+    //document.querySelector("div#myDiv").style.backgroundColor = "blue";
+</script>
+</body>
+
+</html>
